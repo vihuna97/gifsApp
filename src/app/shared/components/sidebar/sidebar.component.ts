@@ -1,3 +1,4 @@
+import { Onclick } from './../../../gifs/interfaces/gifs.interfaces';
 import { Component, Input } from '@angular/core';
 import { GifsHistoryService } from 'src/app/gifs/services/gifs-history.service';
 
@@ -7,13 +8,16 @@ import { GifsHistoryService } from 'src/app/gifs/services/gifs-history.service';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent {
-      constructor(public gifsHistory: GifsHistoryService){
+      constructor(private gifsHistory: GifsHistoryService){
+      }
+     
+      get tags(){
+        return this.gifsHistory.getHistory;
       }
 
-      public tags1: string[] = [...this.gifsHistory.getHistory];
-      
-      
-      // get tags(){
-      //   return this.gifsHistory.getHistory;
-      // }
+
+      OnclickGifHistory(history: string):void {
+        this.gifsHistory.searchGif(history);
+      }
+
 }

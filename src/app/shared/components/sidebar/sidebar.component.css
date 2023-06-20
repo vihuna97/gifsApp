@@ -1,4 +1,16 @@
 #sidebar{
     width: 200px;
-    height: 100vh;
+    height: 100%;
+    position: relative;
+}
+
+#footer-div{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.btn{
+    text-decoration: none;
+    width: 100%
 }

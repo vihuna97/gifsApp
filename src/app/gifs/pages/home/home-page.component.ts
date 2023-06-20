@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { GifsHistoryService } from '../../services/gifs-history.service';
+import { Gif } from '../../interfaces/gifs.interfaces';
 
 @Component({
     selector: 'home-page-component',
@@ -6,6 +8,9 @@ import { Component } from '@angular/core';
 })
 
 export class HomePageComponent  {
-    constructor() 
+    constructor(private gifService: GifsHistoryService) 
      { }
+
+     get searchResponse(): Gif[] 
+     {return  this.gifService.getGifSearch};
 }

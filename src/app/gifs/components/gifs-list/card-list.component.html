@@ -1,13 +1,5 @@
 <div class="row pt-3">
-    <div class="col-md-3 col-sm-6">
-        <div class="card bg-dark mb-2 text-center">
-            <div class="card-body">
-                <p class="card-text text-white">
-                    Hola Mundo
-                </p>
-            </div>
-        </div>
-    </div>
+    <gif-cards  *ngFor="let item of gifList" [gif]="item" class="col-md-3 col-sm-6"></gif-cards>
     
 
 </div>

@@ -19,7 +19,7 @@ export class SearchBoxComponent   {
     searchTag(): void{
         const newTag = this.tagInput.nativeElement.value;
         this.tagInput.nativeElement.value = '';
-            this.gifsHistory.addHistory(newTag);
+            this.gifsHistory.searchGif(newTag);
             console.log(this.gifsHistory.getHistory);
     }
 
