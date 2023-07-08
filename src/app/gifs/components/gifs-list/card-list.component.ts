@@ -12,5 +12,5 @@ export class CardListComponent  {
     constructor() { }
     
     @Input()
-    public gifList: Gif[] = [];
+    public gifList!: Gif[];
 }
