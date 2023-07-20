@@ -1,11 +1,13 @@
-<div class="bg-dark border-right p-3" id="sidebar">
-    <h3 class="text-light text-center">GifsApp</h3>
-    <hr class="text-white">
-    <div class="list-group list-reset">
-        <button *ngFor=" let historyTag of tags; let i = index" 
-        class="list-group-item list-group-item-action text-center" (click)="OnclickGifHistory(historyTag)">{{historyTag}}</button>
+    <div class="bg-dark border-right p-3" id="sidebar">
+        <h3 class="text-light text-center">GifsApp</h3>
+        <hr class="text-white">
+        <div #historyList class="list-group list-reset">
+            <button *ngFor=" let historyTag of tags; let i = index" 
+            class="list-group-item list-group-item-action text-center" (click)="onclickGifHistory(historyTag)">{{historyTag}}</button>
+        </div>
+        <div id="footer-div" class="text-light p-3 w-75">
+            <a #button (click)="onClickFooterButton()" [routerLink]="routerLink" routerLinkActive="active"  type="button" class="btn btn-link bg-light text-dark">My Gifs</a>
+        </div>
     </div>
-    <div id="footer-div" class="text-light p-3 w-75">
-        <button type="button" class="btn btn-link bg-light text-dark">Mis Gifs</button>
-    </div>
-</div>
+    
+

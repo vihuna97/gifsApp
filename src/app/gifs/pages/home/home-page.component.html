@@ -1,8 +1,4 @@
-<div class="row p-3">
-    <div class="col-12">
+<div class="p-3 div">
         <gifs-search-box></gifs-search-box>
-    </div>
-    <div class="col-12">
-        <card-list [gifList]="searchResponse"></card-list>
-    </div>
+        <card-list [buttonTitle]="buttonTitle" [gifList]="searchResponse" [addingFlag]="alertMessage()" [alertFlag]="true"></card-list>
 </div>

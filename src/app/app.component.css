@@ -1,0 +1,8 @@
+.content{
+    flex: 2;
+}
+
+.sidebar {
+    flex: 1;
+    max-width: 200px;
+}

@@ -13,12 +13,17 @@ export class GifsHistoryService {
     }
 
     private _gifSearched: Gif[] = [];
+    private _myGifs: Gif[] = [];
 
     private _gifsHistory: string[] = [];
     private _apiKey: string = '3hYh5rr1UBjoZ9NpBCqJbpxsjKUlTlZX';
 
     get getGifSearch(){
         return [...this._gifSearched];
+    }
+
+    get getMyGifs(){
+        return [...this._myGifs];
     }
 
     get getHistory(){
@@ -38,21 +43,47 @@ export class GifsHistoryService {
         if(this._gifsHistory.length > 10){
             this._gifsHistory.pop();
         }
-        this.setLocalStorage();
+        this.setLocalStorage('history');
     }
 
-    private setLocalStorage():void{
-        localStorage.setItem('History', JSON.stringify(this.getHistory));
+    private setLocalStorage(option: string):void{
+        switch (option) {
+            case 'history':
+                localStorage.setItem('History', JSON.stringify(this.getHistory));
+                break;
+            case 'myGifs':
+                localStorage.setItem('myGifs', JSON.stringify(this.getMyGifs));
+                break;
+            default:
+                return;
+        }
     }
 
     private getLocalStorage():void{
         if(!localStorage.getItem('History')) return;
         this._gifsHistory = JSON.parse(localStorage.getItem('History')!);
+        this._myGifs = JSON.parse(localStorage.getItem('myGifs')!);
+
 
         if(this.getHistory.length === 0 ) return;
         this.searchGif(this.getHistory[0]);
     }
 
+    public removeGifs(gif: Gif): void {
+        this._myGifs = this._myGifs.filter((element) => {return element.id != gif.id});
+        this.setLocalStorage('myGifs');
+    }
+
+    public addMyGifs(gif: Gif): void {
+        if(this._myGifs.length >= 10){
+            console.warn('Ha excedido el número de gifs');
+            return;
+        }
+        this._myGifs = this._myGifs.filter((element) => {return element.id != gif.id});
+        this._myGifs.push(gif);
+        this.setLocalStorage('myGifs'); 
+        console.log(this._myGifs);
+    }
     public searchGif(gifName: string): void{
         let apiUrl: string = 'https://api.giphy.com/v1/gifs';
 
