@@ -4,7 +4,7 @@ import { GifsHistoryService } from '../../services/gifs-history.service';
 
 @Component({
     selector: 'gifs-search-box',
-    template: `<h3>Buscar</h3>
+    template: `<h3>Search</h3>
                 <div class="col">
                     <input #inputTag (keyup.enter)="searchTag()" type="text" class="form-control" placeholder="Search Gifs..."> 
                 </div>`
